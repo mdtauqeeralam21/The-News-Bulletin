@@ -1,0 +1,36 @@
+.header {
+    background-color:whitesmoke;
+   
+   height: 60px;
+    
+  }
+  .heading{
+    padding-top: 20px;
+    color-interpolation-filters: linearRGB;
+    color:blue;
+    color-scheme:unset;
+  
+
+    
+    
+  }
+  .navLinks {
+    list-style-type: none;
+    display: flex;
+    float: right;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    font-weight: 700;
+    font-style: oblique;
+    color: rgb(124, 5, 243);
+  }
+  
+  .navLinks li {
+    margin-right: 10px;
+  }
+  
+  .navLinks li:last-child {
+    margin-right: 0;
+  }
+  
