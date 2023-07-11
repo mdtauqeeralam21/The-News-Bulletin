@@ -5,8 +5,11 @@ import styles from '@/styles/Header.module.css';
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h2 className={styles.heading}>News and Blogs</h2>
-      <nav>
+      <div className={styles.logo}>
+        <img src="/header.png" alt="Logo" />
+      </div>
+
+      <nav className={styles.nav}>
         <ul className={styles.navLinks}>
           <li>
             <Link href="/">
@@ -19,12 +22,12 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about">
-              News&Blogs
+            <Link href="/news">
+              News &amp; Blogs
             </Link>
           </li>
           <li>
-            <Link href="/about">
+            <Link href="/login">
               Login
             </Link>
           </li>

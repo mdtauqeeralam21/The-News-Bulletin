@@ -1,36 +1,50 @@
 .header {
-    background-color:whitesmoke;
-   
-   height: 60px;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
   }
-  .heading{
-    padding-top: 20px;
-    color-interpolation-filters: linearRGB;
-    color:blue;
-    color-scheme:unset;
+  .logo {
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 1px;
+  }
   
+  .logo img {
+    max-width: 50%;
+    max-height: 10%;
+    height: auto;
+    align-items: center;
 
-    
-    
   }
+  
   .navLinks {
     list-style-type: none;
     display: flex;
-    float: right;
-    padding-top: 0px;
-    padding-bottom: 30px;
-    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+   
+   padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
     font-weight: 700;
     font-style: oblique;
     color: rgb(124, 5, 243);
   }
   
   .navLinks li {
-    margin-right: 10px;
+    margin-right: 20px;
+    
   }
   
   .navLinks li:last-child {
     margin-right: 0;
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
   }
   
