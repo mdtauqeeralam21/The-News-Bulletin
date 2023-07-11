@@ -20,19 +20,10 @@ export default function Home({ news }) {
   console.log(news);
   return (
     <>
-    <h1>fetching data</h1>
-    <div className="recipe-list">
+    <div className="grid grid-cols-2 md:grid-cols-4">
       {news.map(item => (
         <Homepage key={item.sys.id} news={item} />
       ))}
-
-<style jsx>{`
-        .recipe-list {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 20px 60px;
-        }
-      `}</style>
     </div>
           </>
   )
