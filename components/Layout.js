@@ -1,10 +1,10 @@
-import Link from 'next/link'
+import Header from './Header'
 
 export default function Layout({ children }) {
   return (
     <div className="layout">
       <header>
-      <h1>The News and Blogs Bulletin</h1>
+      <Header />
       </header>
 
       <div className="page-content">

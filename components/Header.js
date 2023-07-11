@@ -1,15 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '@/styles/Header.module.css';
+import Image from 'next/image';
+
 
 const Header = () => {
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>
-        <img src="/header.png" alt="Logo" />
-      </div>
-
-      <nav className={styles.nav}>
+    <>
+    <nav className="bg-blue-100 flex justify-between m-2 p-3 sticky top-0">
+        <Image 
+        src={ "/header.png" } 
+        width={ `400` } 
+        height={ `200` } 
+        alt="Logo" />
+      <div className="p-8">
         <ul className={styles.navLinks}>
           <li>
             <Link href="/">
@@ -32,8 +36,9 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </nav>
+    </>
   );
 };
 
