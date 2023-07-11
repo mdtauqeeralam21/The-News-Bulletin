@@ -4,12 +4,7 @@ export default function Layout({ children }) {
   return (
     <div className="layout">
       <header>
-        <Link href="/">
-                <h1>
-              Just about news and Blogs
-            </h1>
-            <h2>Spread The Information</h2>
-            </Link>
+      <h1>The News and Blogs Bulletin</h1>
       </header>
 
       <div className="page-content">
