@@ -9,8 +9,8 @@ export default function Homepage({ news }) {
     <div className="card m-2 bg-green-50">
       <div className="featured">
         <Image
-        src={'https://images.ctfassets.net/mbt78vdswgbs/7IN062w3YIzUBChmFemqw1/dea3d851855884976e243dfc66463df3/10kohli.jpg'}
-        // src={ 'https:'+ images.fields.file.url }
+        // src={'https://images.ctfassets.net/mbt78vdswgbs/7IN062w3YIzUBChmFemqw1/dea3d851855884976e243dfc66463df3/10kohli.jpg'}
+         src={ 'https://'+ images.map(image=>image.fields.file.url)  }
         // width={image.fields.file.details.image.width}
         // height={image.fields.file.details.image.height}
         width={`300`}
