@@ -21,20 +21,32 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about">
-              About
+            <Link href="/foods">
+              Foods
             </Link>
           </li>
           <li>
-            <Link href="/news">
-              News &amp; Blogs
+            <Link href="/fashion">
+              Fashion
+            </Link>
+          </li>
+    
+          <li>
+            <Link href="/sports">
+              Sports
+            </Link>
+            </li>
+            <li>
+            <Link href="/sports">
+              Entertainment
             </Link>
           </li>
           <li>
-            <Link href="/login">
-              Login
+            <Link href="/technology">
+              Technology
             </Link>
           </li>
+      
         </ul>
       </div>
     </nav>

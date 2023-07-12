@@ -20,8 +20,27 @@ export default function Home({ news }) {
   console.log(news);
   return (
     <>
-    <div className="grid grid-cols-2 md:grid-cols-4 p-1">
-      {news.map(item => (
+    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+      {
+      news.map(item =>(
+        <Homepage key={item.sys.id} news={item} />
+      ))}
+    </div>
+    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+      {
+      news.filter(i=>i.fields.tags=='Sports').map(item =>(
+        <Homepage key={item.sys.id} news={item} />
+      ))}
+    </div>
+    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+      {
+      news.filter(i=>i.fields.tags=='Fashion').map(item =>(
+        <Homepage key={item.sys.id} news={item} />
+      ))}
+    </div>
+    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+      {
+      news.filter(i=>i.fields.tags=='News').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
