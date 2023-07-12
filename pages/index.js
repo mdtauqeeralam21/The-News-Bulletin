@@ -20,7 +20,7 @@ export default function Home({ news }) {
   console.log(news);
   return (
     <>
-    <div className="grid grid-cols-2 md:grid-cols-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 p-1">
       {news.map(item => (
         <Homepage key={item.sys.id} news={item} />
       ))}
