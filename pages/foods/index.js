@@ -1,19 +1,32 @@
-export default function Foods(){
+import Homepage from '@/components/Homepage'
+import { createClient } from 'contentful'
 
-    return(
-        <>
-        <h1 className="text-3xl font-bold underline">
-            Welcome to Foods page</h1>
-            <div className="grid grid-rows-4 grid-flow-col gap-4">
-                <div className="bg-blue-500">1</div>
-                <div className="bg-red-500">2</div>
-                <div className="bg-green-500 ">3</div>
-                <div className="bg-pink-500">4</div>
-                <div className="bg-blue-500">5</div>
-                <div className="bg-yellow-500">6</div>
-                <div className="bg-pink-500">7</div>
+export async function getStaticProps(){
+  const client = createClient({
+    space: process.env.SPACE_ID,
+    accessToken: process.env.ACCESS_KEY,
+  })
 
-            </div>
+  const res = await client.getEntries({ content_type: "news" })
+
+  return {
+    props: {
+      news: res.items,
+    }
+  }
+}
+
+export default function Foods({ news }) {
+  console.log(news);
+  return (
+    
+    <>
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
+      {
+      news.filter(i=>i.fields.tags=='Food').map(item =>(
+        <Homepage key={item.sys.id} news={item} />
+      ))}
+    </div>
 
         </>
     )

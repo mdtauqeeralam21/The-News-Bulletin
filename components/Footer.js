@@ -1,175 +1,98 @@
 import Image from "next/image";
-import imge from "@/public/app-logo.jpg";
-import "bootstrap/dist/css/bootstrap.css";
+
 export default function Footer() {
   return (
-    <>
-      <hr />
-      <div class="footer css-100">
-        <h2 class="footer-101"></h2>
-        <div class="filter-cont">
-          <div class="filter-inner-cont">
-            <ul class="map-cat-cb-cont">
-              <li>
-                <a class="lia-css" href="#">
-                  <span class="css-y740m4"></span>
-                  <Image
-                    src={imge}
-                    width={120}
-                    height={100}
-                    alt="logo of app"
-                  />
-                </a>
-              </li>
-            </ul>
-            <ul class="map-cat-cb-cont">
-              <li>
-                <a class="lia-css" href="/en/food-and-drink">
-                  <span class="css-y740m4">
-                    <b>Food &amp; Drinks</b>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/cafe">
-                  Cafe
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/bakery">
-                  Bakery
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/ice-cream">
-                  Ice Cream
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/restaurant">
-                  Restaurant
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/bagel-shop">
-                  Bagel Shop
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/grocery-store">
-                  Grocery store
-                </a>
-              </li>
-            </ul>
-            <ul class="map-cat-cb-cont">
-              <li>
-                <a class="lia-css" href="/en/art-culture">
-                  <span class="css-y740m4">
-                    <b>Art &amp; Culture</b>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/gallery">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/bookstore">
-                  Bookstore
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/public-art">
-                  Public Art
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/museum">
-                  Museum
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/architecture">
-                  Architecture
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/school">
-                  School
-                </a>
-              </li>
-            </ul>
-            <ul class="map-cat-cb-cont">
-              <li>
-                <a class="lia-css" href="/en/fashion">
-                  <span class="css-y740m4">
-                    <b>Fashion</b>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/apparel">
-                  Apparel
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/cosmetics">
-                  Cosmetics
-                </a>
-              </li>
-            </ul>
-            <ul class="map-cat-cb-cont">
-              <li>
-                <a class="lia-css" href="/en/living">
-                  <span class="css-y740m4">
-                    <b>Living</b>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/sports">
-                  Sports
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/supermarket">
-                  Supermarket
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/kids">
-                  Kids
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/general-store">
-                  General store
-                </a>
-              </li>
-              <li>
-                <a class="lia-css" href="/en/category/plant">
-                  Plant
-                </a>
-              </li>
-            </ul>
+    <div class="mt-8">
+      <footer class="footer-1  bg-gray-700 dark:bg-gray-900">
+        <div class="mx-auto  w-full max-w-screen-xl">
+          <div class="grid  grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+            <div>
+              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <Image
+                  src="/app-logo.jpg"
+                  alt="app logo"
+                  width={120}
+                  height={130}
+                />
+              </h2>
+            </div>
+            <div>
+              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                Fashion
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium dark:text-white">
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Apparel
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Cosmatics
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Trending News
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                Arts & Culture
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium dark:text-white">
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Blogs
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline"></a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Movies News
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Gallery
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                Sports
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium dark:text-white">
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Cricket
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Football
+                  </a>
+                </li>
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">
+                    Trending Sports
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-2 px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex items-center justify-center">
+            <div class="footer-3 text-sm text-gray-500 dark:text-gray-300 items-center justify-center">
+              © 2023 <a href="#">The News Bulletin™</a>. All Rights Reserved.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="css-footer20">
-        <ul class="css-footer21">
-          <li>
-            <span font-size="10" letter-spacing="1" class="css-y740m4">
-              ©copyright 2023
-            </span>
-          </li>
-          <li>
-            <span font-size="10" letter-spacing="1" class="css-y740m4">
-              The News and Blogs Bulletin
-            </span>
-          </li>
-        </ul>
-      </div>
-    </>
+      </footer>
+    </div>
   );
 }

@@ -1,18 +1,19 @@
 import Header from './Header'
+import Footer from './Footer'
 
 export default function Layout({ children }) {
   return (
-    <div className="layout">
-      <header>
+    <div>
+      <header className='m-1'>
       <Header />
       </header>
 
-      <div className="page-content">
+      <div className="mt-24">
         { children }
       </div>
 
       <footer>
-        <p>Copyright 2023 Just About News and Blogs :)</p>
+        <Footer />
       </footer>
     </div>
   )

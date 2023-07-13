@@ -11,3 +11,8 @@
     box-shadow: theme('boxShadow.xl');
   }
 }
+.footer-1 {
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 15px;
+}

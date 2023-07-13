@@ -19,31 +19,42 @@ export async function getStaticProps(){
 export default function Home({ news }) {
   console.log(news);
   return (
+    
     <>
-    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
       {
       news.map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
-    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+    <hr/><hr/>
+    <div className='text-center font-bold text-2xl'>Sports</div>
+    <hr/><hr/>
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
       news.filter(i=>i.fields.tags=='Sports').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
-    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+    <hr/><hr/>
+    <div className='text-center font-bold text-2xl'>Fashion</div>
+    <hr/><hr/>
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
       {
       news.filter(i=>i.fields.tags=='Fashion').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
-    <div className="grid grid-cols-1 p-1 md:grid-cols-3"> 
+    <hr/><hr/>
+    <div className='text-center font-bold text-2xl'>News</div>
+    <hr/><hr/>
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
       news.filter(i=>i.fields.tags=='News').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
+    
           </>
   )
 }
