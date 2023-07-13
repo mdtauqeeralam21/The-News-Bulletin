@@ -23,7 +23,7 @@ export default function Home({ news }) {
     <>
     <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
       {
-      news.map(item =>(
+      news.slice(0,8).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
@@ -46,11 +46,11 @@ export default function Home({ news }) {
       ))}
     </div>
     <hr/><hr/>
-    <div className='text-center font-bold text-2xl'>News</div>
+    <div className='text-center font-bold text-2xl'>Entertainment</div>
     <hr/><hr/>
     <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
-      news.filter(i=>i.fields.tags=='News').map(item =>(
+      news.filter(i=>i.fields.tags=='Entertainment').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>

@@ -22,10 +22,9 @@ export default function Homepage({ news }) {
         <div className='text-lg font-light font-sans'>{ tags }</div>
           <div className='text-blue-700 text-2xl font-sans'>{ title }</div>
           <div className='text-xl mt-2'>By: { author } </div>
-          
         
         <div className="bg-blue-600 h-7 w-1/3 rounded-full text-center text-white mt-3">
-           <Link href={'/sports/'+slug}>Read This</Link> 
+           <Link href={'/'+slug}>Read This</Link> 
         </div>
       {/* </div> */}
     </div>

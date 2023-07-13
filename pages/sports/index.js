@@ -21,7 +21,7 @@ export default function Sports({ news }) {
   return (
     
     <>
-    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
       {
       news.filter(i=>i.fields.tags=='Sports').map(item =>(
         <Homepage key={item.sys.id} news={item} />
