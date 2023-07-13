@@ -1,23 +1,30 @@
-import Head from "next/head";
-import Footer from "./components/Footer";
-import Layout from "./layout";
+import Homepage from "@/components/Homepage";
+import { createClient } from "contentful";
 
-export default function Home() {
+export async function getStaticProps() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  });
+
+  const res = await client.getEntries({ content_type: "news" });
+
+  return {
+    props: {
+      news: res.items,
+    },
+  };
+}
+
+export default function Home({ news }) {
+  console.log(news);
   return (
     <>
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-          content="width=device-width, initial-scale=1.0, user-scalable=no"
-          name="viewport"
-        />
-        <meta name="theme-color" content="#ffffff"></meta>
-        <title>News App</title>
-      </Head>
-      <div className="main"></div>
-      <Layout />
-      <Footer />
+      <div className="grid grid-cols-2 md:grid-cols-4 p-1">
+        {news.map((item) => (
+          <Homepage key={item.sys.id} news={item} />
+        ))}
+      </div>
     </>
   );
 }
