@@ -79,7 +79,12 @@ export default function SportsDetails({ sport, allNews }) {
           titlesContainer.scrollTop = 0;
         }
 
-        timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+        if (titlesContainer.scrollTop === 0) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+        } else {
+          timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+        }
       };
 
       timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
@@ -145,7 +150,7 @@ export default function SportsDetails({ sport, allNews }) {
             padding: 8,
           }}
         >
-          {allNews.map((item) => (
+          {[...allNews, ...allNews].map((item, index) => (
             <Link
               href="#"
               key={item.sys.id}
@@ -157,6 +162,9 @@ export default function SportsDetails({ sport, allNews }) {
               {item.fields.title}
               <hr />
               <br /> <br />
+              {index === allNews.length * 2 - 1 && (
+                <span ref={titlesRef}></span>
+              )}
             </Link>
           ))}
         </div>
