@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/Header.module.css';
 import Image from 'next/image';
+import { useSession,signIn,signOut } from 'next-auth/react';
 
 
 const Header = () => {
+  const {data:session}=useSession();
   return (
-    <>
-    
+    <> 
     <nav className=" bg-white ">
         <div className='card content-center p-1 '>
           <Link href={"/"} >
@@ -25,6 +25,12 @@ const Header = () => {
               Home
             </Link>
           </div>
+          <div className='p-1 hover:bg-blue-300 rounded'>
+            <Link href="/news">
+              News
+            </Link>
+          </div>
+
           <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/foods">
               Foods
@@ -51,6 +57,18 @@ const Header = () => {
               Technology
             </Link>
           </div>
+          <div>
+         {session?.user ?(
+          <>
+              <p>{session.user.name}</p>
+              <button onClick={()=> signOut()}>Sign out</button>
+              </>
+          ):
+          (
+            <button onClick={()=> signIn()}>Sign in</button>
+          )
+          }      
+        </div>
       </div>
     </nav>
     

@@ -18,7 +18,6 @@ export default function Homepage({ news }) {
         alt='a news picture'
         />
       </div>
-        {/* <div className="card rounded p-1"> */}
         <div className='text-lg font-light font-sans rounded-full border-1 border-black'>{ tags }</div>
         <Link href={'/'+slug}>
           <div className='text-blue-700 text-xl font-sans hover:text-blue-950'>{ title.slice(0,45)+'...' }</div>
@@ -30,8 +29,6 @@ export default function Homepage({ news }) {
            read more
            </div>
            </Link> 
-        
-      {/* </div> */}
     </div>
   )
 }

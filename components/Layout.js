@@ -4,11 +4,11 @@ import Footer from './Footer'
 export default function Layout({ children }) {
   return (
     <div>
-      <header className='fixed top-0 left-0 right-0'>
+      <header className='fixed top-0 left-0 w-full'>
       <Header />
       </header>
 
-      <div className="mt-36">
+      <div className="mt-40">
         { children }
       </div>
 

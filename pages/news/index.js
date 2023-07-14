@@ -9,16 +9,14 @@ export async function getStaticProps(){
 }
 
 export default function News({ allnews }) {
-  console.log(allnews.articles);
   const list = allnews.articles;
   return (
     
     <>
     <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
     {
-     list.map(item =>(
-        //  <Newspage key={item.source.id} article={item} />
-        <div>{item.title}</div>
+     list.slice(0,5).map(item =>(
+          <Newspage key={item.title} article={item} />
        ))}
     </div>
 

@@ -23,7 +23,7 @@ export default function Home({ news }) {
     <>
     <div className="grid grid-cols-1 gap-2 p-1 md:grid-cols-4 gap-2"> 
       {
-      news.slice(0,8).map(item =>(
+      news.slice(0,10).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
