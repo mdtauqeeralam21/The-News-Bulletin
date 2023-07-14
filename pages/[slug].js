@@ -86,7 +86,7 @@ export default function SportsDetails({ sport}) {
                 <div className='p-2 pt-10'>
                 <h1 className="text-4xl p-5">{title}</h1>
                 <h3 className='text-2xl p-5'>{author}</h3>
-                <h3 className='bg-green-200 ml-5'>{date}</h3>
+                <h3 className=' ml-5'>{date.slice(0,10)}</h3>
                 </div>
                 <div className='m-2 pt-10 pl-7'>
               
@@ -100,7 +100,7 @@ export default function SportsDetails({ sport}) {
         />
                 </div>            
             </div>
-                <div className='text-lg indent-150 mt-16 p-3 font-normal text-xl font-sans'>
+                <div className='text-lg indent-150 mt-16 p-3 font-normal text-xl font-playfair'>
                 {documentToReactComponents(description)}
                 </div>
               

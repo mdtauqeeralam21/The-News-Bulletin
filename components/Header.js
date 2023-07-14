@@ -60,12 +60,14 @@ const Header = () => {
           <div>
          {session?.user ?(
           <>
-              <p>{session.user.name}</p>
-              <button onClick={()=> signOut()}>Sign out</button>
+              {/* <p>{session.user.name}</p> */}
+              <div className='p-2 bg-blue-800 text-white text-sm text-center uppercase rounded  hover:bg-blue-400 rounded'
+              onClick={()=> signOut()}>logout</div>
               </>
           ):
           (
-            <button onClick={()=> signIn()}>Sign in</button>
+            <div className='p-2 bg-blue-800 text-white text-sm uppercase hover:bg-blue-400 rounded'
+            onClick={()=> signIn()}>login</div>
           )
           }      
         </div>

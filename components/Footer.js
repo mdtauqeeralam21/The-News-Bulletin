@@ -23,12 +23,12 @@ export default function Footer() {
               </h2>
               <ul className=" font-medium ">
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
-                    Apparel
+                  <Link href="foods" className="hover:underline">
+                    Foods
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
+                  <Link href="/news" className="hover:underline">
                     Trending News
                   </Link>
                 </li>
@@ -46,7 +46,7 @@ export default function Footer() {
                 </li>
               
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
+                  <Link href="news" className="hover:underline">
                     Movies News
                   </Link>
                 </li>
