@@ -4,7 +4,7 @@ import Footer from './Footer'
 export default function Layout({ children }) {
   return (
     <div>
-      <header className='m-1'>
+      <header className='fixed top-0 left-0 right-0'>
       <Header />
       </header>
 
@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         { children }
       </div>
 
-      <footer>
+      <footer className='relative inset-x-0 bottom-0'>
         <Footer />
       </footer>
     </div>

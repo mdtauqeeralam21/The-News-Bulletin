@@ -14,8 +14,7 @@ export const getStaticPaths = async () => {
 
   const paths = res.items.map(item => {
     return {
-      params: { slug: item.fields.slug,
-                tags:item.fields.tags }
+      params: { slug: item.fields.slug}
     }
   })
 
@@ -28,8 +27,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const { items } = await client.getEntries({
     content_type: 'news',
-    'fields.slug': params.slug,
-    'fields.tags': params.tags
+    'fields.slug': params.slug
+  
   })
 
   return {
@@ -41,7 +40,7 @@ export const getStaticProps = async ({ params }) => {
 export default function SportsDetails({ sport }) {
   console.log(sport);
 //   if(!sport) return <Skeleton/>
-  const {thumbnail, title, description, author, date } = sport.fields;
+  const {thumbnail, title, description, author, date,slug } = sport.fields;
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 p-4">

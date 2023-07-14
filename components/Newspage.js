@@ -2,12 +2,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 
-export default function Homepage({ news }) {
-  const { title,author,tags,thumbnail,slug } = news.fields;
+export default function Newspage({ article }) {
+  const { title,author } = article;
 
   return (
     <div className="card border-b-4 border-black p-2">
-      <div className="featured">
+        <div>{title}</div>
+        <div>{author}</div>
+
+
+
+      {/* <div className="featured">
         <Image className='rounded'
         //  src={ 'https:'+ thumbnail.map(image=>image.fields.file.url)  }
         src={'https:'+ thumbnail.fields.file.url}
@@ -17,9 +22,9 @@ export default function Homepage({ news }) {
         // height={`650`}
         alt='a news picture'
         />
-      </div>
+      </div> */}
         {/* <div className="card rounded p-1"> */}
-        <div className='text-lg font-light font-sans rounded-full border-1 border-black'>{ tags }</div>
+        {/* <div className='text-lg font-light font-sans rounded-full border-1 border-black'>{ tags }</div>
         <Link href={'/'+slug}>
           <div className='text-blue-700 text-xl font-sans hover:text-blue-950'>{ title.slice(0,45)+'...' }</div>
           </Link>
@@ -30,7 +35,7 @@ export default function Homepage({ news }) {
            read more
            </div>
            </Link> 
-        
+         */}
       {/* </div> */}
     </div>
   )

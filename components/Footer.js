@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="mt-8">
       <footer className="footer-1  bg-white ">
         <div className="mx-auto  w-full max-w-screen-xl">
-          <div className="grid  grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+          <div className="grid  grid-cols-2 gap-8 px-4 py-6 bg-gray-700 lg:py-8 md:grid-cols-4">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase ">
                 <Image
@@ -21,7 +21,7 @@ export default function Footer() {
               <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
                 Fashion
               </h2>
-              <ul className=" text-white font-medium ">
+              <ul className=" font-medium ">
                 <li className="mb-4">
                   <Link href="#" className="hover:underline">
                     Apparel
@@ -61,14 +61,14 @@ export default function Footer() {
               <h2 className="mb-6 text-sm font-semibold text-white uppercase">
                 Sports
               </h2>
-              <ul className="  font-medium text-white">
+              <ul className="  font-medium">
                 <li className="mb-4">
                   <Link href="/sports" className="hover:underline">
                     Cricket
                   </Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="#" className="hover:underline">
+                  <Link href="/sports" className="hover:underline">
                     Football
                   </Link>
                 </li>
