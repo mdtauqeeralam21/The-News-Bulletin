@@ -6,7 +6,7 @@ export default function Homepage({ news }) {
   const { title,author,tags,thumbnail,slug } = news.fields;
 
   return (
-    <div className="card border-b-4 border-black p-2">
+    <div className="card font-Playfair border-b-4 border-black p-2">
       <div className="featured">
         <Image className='rounded active:scale-150'
         //  src={ 'https:'+ thumbnail.map(image=>image.fields.file.url)  }
@@ -20,7 +20,7 @@ export default function Homepage({ news }) {
       </div>
         <div className='text-lg font-light font-sans rounded-full border-1 border-black'>{ tags }</div>
         <Link href={'/'+slug}>
-          <div className='text-blue-700 text-xl font-sans hover:text-blue-950'>{ title.slice(0,45)+'...' }</div>
+          <div className='text-blue-700 text-xl hover:text-blue-950'>{ title.slice(0,45)+'...' }</div>
           </Link>
           <div className='text-xl mt-2'>By: { author } </div>
         

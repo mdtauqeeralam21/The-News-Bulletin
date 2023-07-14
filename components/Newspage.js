@@ -17,7 +17,7 @@ export default function Newspage({ article }) {
           alt='a news picture'
         />
       </div>
-      <div className='text-blue-700 text-xl font-sans hover:text-blue-950'>{title}</div>
+      <div className='text-blue-700 text-xl hover:text-blue-950'>{title}</div>
 
       <div className='text-xl mt-2'>By: {author} </div>
 

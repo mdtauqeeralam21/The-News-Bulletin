@@ -76,7 +76,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="footer-2 bg-white  md:flex items-center justify-center">
+          <div className="footer-2  md:flex items-center justify-center">
             <div className="footer-3 text-sm text-gray-900  items-center justify-center">
               © 2023 <Link href="/">The News Bulletin™</Link>. All Rights Reserved.
             </div>
