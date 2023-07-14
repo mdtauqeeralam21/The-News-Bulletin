@@ -42,7 +42,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function SportsDetails({ sport, allNews }) {
-  console.log(sport);
   const { title, description, author, date } = sport.fields;
 
   const DEFAULT_DESCRIPTION =
@@ -50,6 +49,7 @@ export default function SportsDetails({ sport, allNews }) {
 
   const [selectedNews, setSelectedNews] = useState(null);
   const titlesRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   const handleClick = (thumbnail) => {
     const newsItem = allNews.find(
@@ -79,13 +79,13 @@ export default function SportsDetails({ sport, allNews }) {
           titlesContainer.scrollTop = 0;
         }
 
-        setTimeout(scrollAnimation, scrollDelay);
+        timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
       };
 
-      const interval = setTimeout(scrollAnimation, scrollDelay);
+      timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
 
       return () => {
-        clearTimeout(interval);
+        clearTimeout(timeoutRef.current);
       };
     }
   }, [allNews, selectedNews]);
