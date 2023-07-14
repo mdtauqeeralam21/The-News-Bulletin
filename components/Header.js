@@ -7,8 +7,9 @@ import Image from 'next/image';
 const Header = () => {
   return (
     <>
-    <nav className="bg-blue-100 flex justify-between m-2 p-3 sticky top-0">
-        <Image 
+    
+    <nav className="fixed top-0 left-0 right-0 bg-white grid grid-cols-1 md:flex justify-between m-0 p-1 border-2 border-indigo-300 ">
+        <Image className='rounded' 
         src={ "/header.png" } 
         width={ `400` } 
         height={ `200` } 
@@ -21,23 +22,36 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about">
-              About
+            <Link href="/foods">
+              Foods
             </Link>
           </li>
           <li>
-            <Link href="/news">
-              News &amp; Blogs
+            <Link href="/fashion">
+              Fashion
+            </Link>
+          </li>
+    
+          <li>
+            <Link href="/sports">
+              Sports
+            </Link>
+            </li>
+            <li>
+            <Link href="/entertainment">
+              Entertainment
             </Link>
           </li>
           <li>
-            <Link href="/login">
-              Login
+            <Link href="/technology">
+              Technology
             </Link>
           </li>
+      
         </ul>
       </div>
     </nav>
+    
     </>
   );
 };

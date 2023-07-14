@@ -16,14 +16,14 @@ export async function getStaticProps(){
   }
 }
 
-export default function Sports({ news }) {
+export default function Technology({ news }) {
   console.log(news);
   return (
     
     <>
-    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3"> 
       {
-      news.filter(i=>i.fields.tags=='Sports').map(item =>(
+      news.filter(i=>i.fields.tags=='Technology').map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
