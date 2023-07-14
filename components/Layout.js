@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <Header />
       </header>
 
-      <div className="mt-24">
+      <div className="mt-36">
         { children }
       </div>
 

@@ -8,47 +8,49 @@ const Header = () => {
   return (
     <>
     
-    <nav className="fixed top-0 left-0 right-0 bg-white grid grid-cols-1 md:flex justify-between m-0 p-1 border-2 border-indigo-300 ">
-        <Image className='rounded' 
+    <nav className="fixed top-0 left-0 right-0 bg-white md:m-0 p-1 border-1 border-indigo-100 ">
+        <div className='content-center'>
+          <Link href={"/"} >
+        <Image className='rounded m-auto' 
         src={ "/header.png" } 
         width={ `400` } 
         height={ `200` } 
         alt="Logo" />
-      <div className="p-8">
-        <ul className={styles.navLinks}>
-          <li>
+        </Link>
+        </div>
+      <div className="flex flex-row justify-center gap-6 bg-blue-100 p-3">
+        
+          <div>
             <Link href="/">
               Home
             </Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link href="/foods">
               Foods
             </Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link href="/fashion">
               Fashion
             </Link>
-          </li>
+          </div>
     
-          <li>
+          <div>
             <Link href="/sports">
               Sports
             </Link>
-            </li>
-            <li>
+            </div>
+            <div>
             <Link href="/entertainment">
               Entertainment
             </Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link href="/technology">
               Technology
             </Link>
-          </li>
-      
-        </ul>
+          </div>
       </div>
     </nav>
     

@@ -14,7 +14,8 @@ export const getStaticPaths = async () => {
 
   const paths = res.items.map(item => {
     return {
-      params: { slug: item.fields.slug }
+      params: { slug: item.fields.slug,
+                tags:item.fields.tags }
     }
   })
 
@@ -27,7 +28,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const { items } = await client.getEntries({
     content_type: 'news',
-    'fields.slug': params.slug
+    'fields.slug': params.slug,
+    'fields.tags': params.tags
   })
 
   return {
