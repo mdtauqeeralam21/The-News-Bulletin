@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FiMenu } from "react-icons/fi";
 import { useSession,signIn,signOut } from 'next-auth/react';
 import Menu from './Menu';
+import Dropdown from './Dropdown';
 
 
 const Header = () => {
@@ -24,9 +25,8 @@ const Header = () => {
         <Menu />
         
       </div>
-      <div className="inline-flex flex-end md:hidden">
-        
-          <FiMenu className="text-3xl" />
+      <div className="float-right m-2 md:hidden">
+          <Dropdown />
         </div>
     </nav>
     

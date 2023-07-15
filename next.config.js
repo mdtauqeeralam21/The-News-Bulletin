@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images:{
-    domains: ['images.ctfassets.net',
+    domains: [
+      'images.ctfassets.net',
     "s.yimg.com",
     "media.wired.com",
     "i.kinja-img.com",
