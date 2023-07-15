@@ -4,11 +4,11 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <div className="mt-8">
-      <footer className="footer-1  bg-white ">
+      <footer className="footer-1  bg-sky-950 text-white">
         <div className="mx-auto  w-full max-w-screen-xl">
-          <div className="grid  grid-cols-2 gap-8 px-4 py-6 bg-gray-700 lg:py-8 md:grid-cols-4">
+          <div className="grid  grid-cols-2 gap-8 px-4 py-6 lg:py-8 text-lg md:grid-cols-4 ">
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase ">
+              <h2 className="mb-6 font-semibold uppercase ">
                 <Image
                   src="/app-logo.jpg"
                   alt="app logo"
@@ -18,9 +18,7 @@ export default function Footer() {
               </h2>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
-                Fashion
-              </h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase ">Fashion</h2>
               <ul className=" font-medium ">
                 <li className="mb-4">
                   <Link href="foods" className="hover:underline">
@@ -35,7 +33,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase">
+              <h2 className="mb-6 text-sm font-semibold uppercase">
                 Arts & Culture
               </h2>
               <ul className="text-white-500">
@@ -44,7 +42,7 @@ export default function Footer() {
                     Blogs
                   </Link>
                 </li>
-              
+
                 <li className="mb-4">
                   <Link href="news" className="hover:underline">
                     Movies News
@@ -58,9 +56,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase">
-                Sports
-              </h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase">Sports</h2>
               <ul className="  font-medium">
                 <li className="mb-4">
                   <Link href="/sports" className="hover:underline">
@@ -72,14 +68,12 @@ export default function Footer() {
                     Football
                   </Link>
                 </li>
-                
               </ul>
             </div>
           </div>
-          <div className="footer-2  md:flex items-center justify-center">
-            <div className="footer-3 text-sm text-gray-900  items-center justify-center">
-              © 2023 <Link href="/">The News Bulletin™</Link>. All Rights Reserved.
-            </div>
+          <div className="footer-3 text-sm text-gray-900 p-6 text-center bg-gray-200 font-size text-xl">
+            © 2023 <Link href="/">The News Bulletin™</Link>. All Rights
+            Reserved.
           </div>
         </div>
       </footer>
