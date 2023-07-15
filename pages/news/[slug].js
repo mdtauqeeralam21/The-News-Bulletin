@@ -1,7 +1,8 @@
-export default function Newsdetails(){
+export default function NewsDetails(){
+
     return(
         <>
-        <h1>Welcome</h1>
+        <h1>Slug page</h1>
         </>
     )
 }
