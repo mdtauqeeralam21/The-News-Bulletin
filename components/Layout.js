@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         { children }
       </div>
 
-      <footer className='relative inset-x-0 bottom-0'>
+      <footer className='relative inset-x-0 bottom-0 mt-10 w-full'>
         <Footer />
       </footer>
     </div>

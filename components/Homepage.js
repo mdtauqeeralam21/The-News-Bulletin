@@ -24,8 +24,9 @@ export default function Homepage({ news }) {
           </Link>
           <div className='text-xl mt-2'>By: { author } </div>
         
-          <Link href={'/'+slug}>
-        <div className="bg-blue-700 h-8 w-1/3 rounded-full text-center overflow-hidden text-white p-1 mr-0 ml-auto hover:bg-blue-400">
+          <Link className='justify-end'
+          href={'/'+slug}>
+        <div className="bg-blue-700 h-8 w-1/3 rounded-full text-center overflow-hidden text-white p-1 mr-0 ml-auto mb-1 hover:bg-blue-400">
            read more
            </div>
            </Link> 

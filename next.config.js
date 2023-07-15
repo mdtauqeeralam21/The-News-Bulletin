@@ -8,7 +8,8 @@ const nextConfig = {
     "i.kinja-img.com",
     "cdn.mos.cms.futurecdn.net",
     "cdn.mos.cms.futurecdn.net",
-    "i.guim.co.uk"
+    "i.guim.co.uk",
+    "tailwindcss.com" 
   ],
   }
 }

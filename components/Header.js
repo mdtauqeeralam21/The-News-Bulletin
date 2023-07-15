@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FiMenu } from "react-icons/fi";
 import { useSession,signIn,signOut } from 'next-auth/react';
+import Menu from './Menu';
 
 
 const Header = () => {
@@ -18,60 +20,14 @@ const Header = () => {
         alt="Logo" />
         </Link>
         </div>
-      <div className="flex flex-row justify-center gap-6 bg-blue-100 p-3">
+      <div className=" hidden md:flex flex-row justify-center gap-6 bg-blue-100 p-3">
+        <Menu />
         
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/">
-              Home
-            </Link>
-          </div>
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/news">
-              News
-            </Link>
-          </div>
-
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/foods">
-              Foods
-            </Link>
-          </div>
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/fashion">
-              Fashion
-            </Link>
-          </div>
-    
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/sports">
-              Sports
-            </Link>
-            </div>
-            <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/entertainment">
-              Entertainment
-            </Link>
-          </div>
-          <div className='p-1 hover:bg-blue-300 rounded'>
-            <Link href="/technology">
-              Technology
-            </Link>
-          </div>
-          <div>
-         {session?.user ?(
-          <>
-              {/* <p>{session.user.name}</p> */}
-              <div className='p-2 bg-blue-800 text-white text-sm text-center rounded hover:bg-blue-400 rounded'
-              onClick={()=> signOut()}>Sign out</div>
-              </>
-          ):
-          (
-            <div className='p-2 bg-blue-800 text-white text-sm hover:bg-blue-400 rounded'
-            onClick={()=> signIn()}>Sign in</div>
-          )
-          }      
-        </div>
       </div>
+      <div className="inline-flex flex-end md:hidden">
+        
+          <FiMenu className="text-3xl" />
+        </div>
     </nav>
     
     </>

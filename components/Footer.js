@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="mt-8">
+   <>
       <footer className="footer-1  bg-white ">
-        <div className="mx-auto  w-full max-w-screen-xl">
+        <div className="mx-auto  w-full">
           <div className="grid  grid-cols-2 gap-8 px-4 py-6 bg-gray-700 lg:py-8 md:grid-cols-4">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase ">
@@ -83,6 +83,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </div>
+      </>
   );
 }
