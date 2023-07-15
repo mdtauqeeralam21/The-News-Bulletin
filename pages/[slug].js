@@ -107,8 +107,8 @@ export default function SportsDetails({ sport, allNews }) {
             </h1>
             <h3 className="text-2xl p-5">
               {selectedNews ? selectedNews.fields.author : author}{" "}
-              <span className="bg-grey-200 ml-12 ">
-                {selectedNews ? selectedNews.fields.date : date}
+              <span className="bg-grey-300 text-xl ml-12 ">
+                {selectedNews ? selectedNews.fields.date.slice(0,10) : date}
               </span>
             </h3>
           </div>
@@ -145,7 +145,7 @@ export default function SportsDetails({ sport, allNews }) {
             ref={titlesRef}
             className="scrollbar"
             style={{
-              maxHeight: "calc(80vh - 8rem)",
+              maxHeight: "calc(100vh - 8rem)",
               overflowY: "auto",
               overflowX: "hidden",
               backgroundColor: "white",
