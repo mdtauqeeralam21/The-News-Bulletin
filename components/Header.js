@@ -1,54 +1,76 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/Header.module.css';
 import Image from 'next/image';
+import { useSession,signIn,signOut } from 'next-auth/react';
 
 
 const Header = () => {
+  const {data:session}=useSession();
   return (
-    <>
-    
-    <nav className="fixed top-0 left-0 right-0 bg-white grid grid-cols-1 md:flex justify-between m-0 p-1 border-2 border-indigo-300 ">
-        <Image className='rounded' 
+    <> 
+    <nav className=" bg-white ">
+        <div className='card content-center p-1 '>
+          <Link href={"/"} >
+        <Image className='rounded m-auto hover:border-2' 
         src={ "/header.png" } 
         width={ `400` } 
         height={ `200` } 
         alt="Logo" />
-      <div className="p-8">
-        <ul className={styles.navLinks}>
-          <li>
+        </Link>
+        </div>
+      <div className="flex flex-row justify-center gap-6 bg-blue-100 p-3">
+        
+          <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/">
               Home
             </Link>
-          </li>
-          <li>
+          </div>
+          <div className='p-1 hover:bg-blue-300 rounded'>
+            <Link href="/news">
+              News
+            </Link>
+          </div>
+
+          <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/foods">
               Foods
             </Link>
-          </li>
-          <li>
+          </div>
+          <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/fashion">
               Fashion
             </Link>
-          </li>
+          </div>
     
-          <li>
+          <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/sports">
               Sports
             </Link>
-            </li>
-            <li>
+            </div>
+            <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/entertainment">
               Entertainment
             </Link>
-          </li>
-          <li>
+          </div>
+          <div className='p-1 hover:bg-blue-300 rounded'>
             <Link href="/technology">
               Technology
             </Link>
-          </li>
-      
-        </ul>
+          </div>
+          <div>
+         {session?.user ?(
+          <>
+              {/* <p>{session.user.name}</p> */}
+              <div className='p-2 bg-blue-800 text-white text-sm text-center rounded hover:bg-blue-400 rounded'
+              onClick={()=> signOut()}>Sign out</div>
+              </>
+          ):
+          (
+            <div className='p-2 bg-blue-800 text-white text-sm hover:bg-blue-400 rounded'
+            onClick={()=> signIn()}>Sign in</div>
+          )
+          }      
+        </div>
       </div>
     </nav>
     

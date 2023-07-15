@@ -3,6 +3,7 @@ import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -42,6 +43,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function SportsDetails({ sport, allNews }) {
+  const { data: session } = useSession();
   const { title, description, author, date } = sport.fields;
 
   const DEFAULT_DESCRIPTION =
@@ -50,6 +52,7 @@ export default function SportsDetails({ sport, allNews }) {
   const [selectedNews, setSelectedNews] = useState(null);
   const titlesRef = useRef(null);
   const timeoutRef = useRef(null);
+  const isFirstVisit = useRef(true);
 
   const handleClick = (thumbnail) => {
     const newsItem = allNews.find(
@@ -59,116 +62,136 @@ export default function SportsDetails({ sport, allNews }) {
   };
 
   useEffect(() => {
-    // Set the first news item as the default selected news
     if (!selectedNews && allNews.length > 0) {
       setSelectedNews(allNews[0]);
     }
 
     const titlesContainer = titlesRef.current;
-    const scrollHeight = titlesContainer.scrollHeight;
-    const clientHeight = titlesContainer.clientHeight;
 
-    if (scrollHeight > clientHeight) {
-      const scrollStep = 1; // Adjust the scroll step for slower or faster scrolling
-      const scrollDelay = 50; // Adjust the scroll delay for slower or faster scrolling
+    if (titlesContainer) {
+      const scrollHeight = titlesContainer.scrollHeight;
+      const clientHeight = titlesContainer.clientHeight;
 
-      const scrollAnimation = () => {
-        if (titlesContainer.scrollTop < scrollHeight - clientHeight) {
-          titlesContainer.scrollTop += scrollStep;
-        } else {
-          titlesContainer.scrollTop = 0;
-        }
+      if (scrollHeight > clientHeight && isFirstVisit.current) {
+        const scrollStep = 1;
+        const scrollDelay = 100;
 
-        if (titlesContainer.scrollTop === 0) {
-          clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
-        } else {
-          timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
-        }
-      };
+        const scrollAnimation = () => {
+          if (titlesContainer.scrollTop < scrollHeight - clientHeight) {
+            titlesContainer.scrollTop += scrollStep;
+          } else {
+            titlesContainer.scrollTop = 0;
+          }
 
-      timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+          if (titlesContainer.scrollTop === 0) {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+          } else {
+            timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+          }
+        };
 
-      return () => {
-        clearTimeout(timeoutRef.current);
-      };
+        timeoutRef.current = setTimeout(scrollAnimation, scrollDelay);
+        isFirstVisit.current = false;
+      }
     }
   }, [allNews, selectedNews]);
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
-      <div className="md:col-span-4">
-        <div className="pt-5">
-          <h1 className="text-4xl p-5">
-            {selectedNews ? selectedNews.fields.title : title}
-          </h1>
-          <h3 className="text-2xl p-5">
-            {selectedNews ? selectedNews.fields.author : author}{" "}
-            <span className="bg-grey-200 ml-12 ">
-              {selectedNews ? selectedNews.fields.date : date}
-            </span>
-          </h3>
-        </div>
+  if (session) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
+        <div className="md:col-span-4">
+          <div className="pt-5">
+            <h1 className="text-4xl p-5">
+              {selectedNews ? selectedNews.fields.title : title}
+            </h1>
+            <h3 className="text-2xl p-5">
+              {selectedNews ? selectedNews.fields.author : author}{" "}
+              <span className="bg-grey-200 ml-12 ">
+                {selectedNews ? selectedNews.fields.date : date}
+              </span>
+            </h3>
+          </div>
 
-        <div className="pt-4 pl-5">
-          <Image
-            className="rounded"
-            src={
-              selectedNews
-                ? "https:" + selectedNews.fields.thumbnail.fields.file.url
-                : "/path_to_default_image"
-            }
-            width={
-              selectedNews?.fields.thumbnail.fields.file.details.image.width ||
-              500
-            }
-            height={
-              selectedNews?.fields.thumbnail.fields.file.details.image.height ||
-              500
-            }
-            alt="a news picture"
-          />
+          <div className="pt-4 pl-5">
+            <Image
+              className="rounded"
+              src={
+                selectedNews
+                  ? "https:" + selectedNews.fields.thumbnail.fields.file.url
+                  : "/path_to_default_image"
+              }
+              width={
+                selectedNews?.fields.thumbnail.fields.file.details.image
+                  .width || 500
+              }
+              height={
+                selectedNews?.fields.thumbnail.fields.file.details.image
+                  .height || 500
+              }
+              alt="a news picture"
+            />
+          </div>
+        </div>
+        <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl font-sans md:col-span-5 overflow-auto">
+          <div className="scrollbar" style={{ maxHeight: "50vh" }}>
+            {selectedNews
+              ? documentToReactComponents(selectedNews.fields.description)
+              : DEFAULT_DESCRIPTION}
+          </div>
+        </div>
+        <div className="mt-8 font-normal text-justify font-sans md:col-start-10 md:col-end-13 overflow-auto">
+          <div
+            ref={titlesRef}
+            className="scrollbar"
+            style={{
+              maxHeight: "calc(80vh - 8rem)",
+              overflowY: "auto",
+              overflowX: "hidden",
+              backgroundColor: "white",
+              margin: 0,
+              padding: 8,
+            }}
+          >
+            {[...allNews, ...allNews].map((item, index) => (
+              <Link
+                href="#"
+                key={item.sys.id}
+                className={`hover:underline ${
+                  selectedNews === item ? "text-blue-500" : ""
+                }`}
+                onClick={() => handleClick(item.fields.thumbnail)}
+              >
+                {item.fields.title}
+                <hr />
+                <br /> <br />
+                {index === allNews.length * 2 - 1 && (
+                  <span ref={titlesRef}></span>
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl font-sans md:col-span-5 overflow-auto">
-        <div className="scrollbar" style={{ maxHeight: "50vh" }}>
-          {selectedNews
-            ? documentToReactComponents(selectedNews.fields.description)
-            : DEFAULT_DESCRIPTION}
+    );
+  } else {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="max-w-md w-full p-6 bg-white rounded-lg shadow">
+          <h2
+            className="text-lg p-2 bg-blue-800 w-1/3 text-center text-white font-semibold mb-4 rounded hover:bg-blue-400"
+            onClick={() => signIn()}
+          >
+            Sign in
+          </h2>
+          <p className="text-gray-700 text-xl mb-4">
+            Please sign in to access the content.
+          </p>
+          <p className="text-gray-700 ">
+            Sign in using your credentials to unlock the full experience.
+          </p>
         </div>
       </div>
-      <div className="mt-8 font-normal text-justify font-sans md:col-start-10 md:col-end-13 overflow-auto">
-        <div
-          ref={titlesRef}
-          className="scrollbar"
-          style={{
-            maxHeight: "calc(80vh - 8rem)",
-            overflowY: "auto",
-            overflowX: "hidden",
-            backgroundColor: "white",
-            margin: 0,
-            padding: 8,
-          }}
-        >
-          {[...allNews, ...allNews].map((item, index) => (
-            <Link
-              href="#"
-              key={item.sys.id}
-              className={`hover:underline ${
-                selectedNews === item ? "text-blue-500" : ""
-              }`}
-              onClick={() => handleClick(item.fields.thumbnail)}
-            >
-              {item.fields.title}
-              <hr />
-              <br /> <br />
-              {index === allNews.length * 2 - 1 && (
-                <span ref={titlesRef}></span>
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
