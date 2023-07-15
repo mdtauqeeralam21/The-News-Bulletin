@@ -1,6 +1,7 @@
 import slugify from 'slugify';
 import { useEffect,useState } from 'react';
 import Newspage from "@/components/Newspage";
+import Skeleton from '@/components/Skeleton';
 
 export default function News() {
     const [news, setNews] = useState([]);
@@ -25,8 +26,11 @@ export default function News() {
   
       fetchData();
     }, []);
+
+  
   
     return (
+      
       <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3">
         {news.slice(0,6).map((article) => (
           <Newspage key={article.title} article={article} />

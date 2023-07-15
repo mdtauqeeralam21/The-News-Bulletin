@@ -12,23 +12,12 @@ const NotFound = () => {
   }, [])
 
   return (
-    <div className="not-found">
-      <h1>404</h1>
+    <div className="bg-white p-20 text-4xl leading-loose ">
+      <h1 className='font-6xl'>404</h1>
       <h2>Oops! That page cannot be found :(</h2>
-      <p>Go back to <Link className='bg-blue-600 rounded text-white'
-      href="/" >Homepage</Link></p>
+      <p>Going back to <Link className='bg-blue-600 rounded text-white shadow-lg shadow-blue-500/50  p-1'
+      href="/" >Homepage</Link> ...</p>
 
-      {/* <style jsx>{`
-        .not-found {
-          background: #fff;
-          padding: 30px;
-          box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-          transform: rotateZ(-1deg);
-        }
-        h1 {
-          font-size: 3em;
-        }
-      `}</style> */}
     </div>
   );
 }

@@ -105,11 +105,11 @@ export default function SportsDetails({ sport, allNews }) {
             <h1 className="text-4xl p-5">
               {selectedNews ? selectedNews.fields.title : title}
             </h1>
-            <h3 className="text-2xl p-5">
+            <h3 className="text-2xl p-3">
               {selectedNews ? selectedNews.fields.author : author}{" "}
-              <span className="bg-grey-300 text-xl ml-12 ">
+              <div className="bg-grey-300 text-xl mt-5 border-b-2 border-black">
                 {selectedNews ? selectedNews.fields.date.slice(0,10) : date}
-              </span>
+              </div>
             </h3>
           </div>
 

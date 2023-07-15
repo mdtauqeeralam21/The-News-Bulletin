@@ -6,7 +6,6 @@ export async function getStaticProps(){
     space: process.env.SPACE_ID,
     accessToken: process.env.ACCESS_KEY,
   })
-
   const res = await client.getEntries({ content_type: "news" })
 
   return {
