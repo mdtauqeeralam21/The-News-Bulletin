@@ -9,7 +9,7 @@ export default function Newspage({ article }) {
   return (
     <div className="card relative border-b-4 border-black p-2">
       <div className="featured">
-        <Image className='rounded'
+        <Image className='h-48 mb-3 rounded'
           src={urlToImage}
           width={`500`}
           height={`650`}

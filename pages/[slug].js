@@ -99,6 +99,13 @@ export default function SportsDetails({ sport, allNews }) {
 
   if (session) {
     return (
+      <>
+      <Head>
+        <title>News and Blogs</title>
+        <meta name="description" content="latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div className="md:col-span-4">
           <div className="pt-5">
@@ -173,6 +180,7 @@ export default function SportsDetails({ sport, allNews }) {
           </div>
         </div>
       </div>
+      </>
     );
   } else {
     return (

@@ -49,6 +49,7 @@ export default function NewsArticlePage({ article }) {
   const { title,urlToImage,publishedAt, description,content,author,url } = article;
 
   return (
+    
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 p-4">
         
              <div>
