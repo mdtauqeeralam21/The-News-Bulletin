@@ -45,7 +45,7 @@ export const getStaticProps = async ({ params }) => {
 
 export default function SportsDetails({ sport, allNews }) {
   const { data: session } = useSession();
-  const { title, description, author, date } = sport.fields;
+  const { title, author, date } = sport.fields;
 
   const DEFAULT_DESCRIPTION =
     "Welcome! Select a news title to view its details.";
@@ -110,11 +110,11 @@ export default function SportsDetails({ sport, allNews }) {
             <h1 className="text-4xl p-5">
               {selectedNews ? selectedNews.fields.title : title}
             </h1>
-            <h3 className="text-2xl p-5">
+            <h3 className="text-2xl p-5 mb-4 mt-0">
               {selectedNews ? selectedNews.fields.author : author}{" "}
-              <span className="bg-grey-200 ml-12 ">
-                {selectedNews ? selectedNews.fields.date : date}
-              </span>
+              <div className="bg-grey-200 text-normal border-b-2 border-black mt-4 ">
+                {selectedNews ? selectedNews.fields.date.slice(0,10) : date}
+              </div>
             </h3>
           </div>
 
@@ -138,7 +138,7 @@ export default function SportsDetails({ sport, allNews }) {
             />
           </div>
         </div>
-        <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl font-sans md:col-span-5 overflow-auto">
+        <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl md:col-span-5 overflow-auto">
           <div className="scrollbar" style={{ maxHeight: "50vh" }}>
             {selectedNews
               ? documentToReactComponents(selectedNews.fields.description)
@@ -198,3 +198,4 @@ export default function SportsDetails({ sport, allNews }) {
     );
   }
 }
+
