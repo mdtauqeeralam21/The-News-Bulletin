@@ -3,7 +3,8 @@ import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -54,6 +55,8 @@ export default function SportsDetails({ sport, allNews }) {
   const timeoutRef = useRef(null);
   const isFirstVisit = useRef(true);
 
+  const router = useRouter();
+
   const handleClick = (thumbnail) => {
     const newsItem = allNews.find(
       (item) => item.fields.thumbnail === thumbnail
@@ -63,7 +66,9 @@ export default function SportsDetails({ sport, allNews }) {
 
   useEffect(() => {
     if (!selectedNews && allNews.length > 0) {
-      setSelectedNews(allNews[0]);
+      setSelectedNews(
+        allNews.find((item) => item.fields.slug === router.query.slug)
+      );
     }
 
     const titlesContainer = titlesRef.current;
@@ -95,7 +100,7 @@ export default function SportsDetails({ sport, allNews }) {
         isFirstVisit.current = false;
       }
     }
-  }, [allNews, selectedNews]);
+  }, [allNews, router.query.slug]);
 
   if (session) {
     return (
@@ -153,10 +158,10 @@ export default function SportsDetails({ sport, allNews }) {
               padding: 8,
             }}
           >
-            {[...allNews, ...allNews].map((item, index) => (
+            {allNews.map((item, index) => (
               <Link
-                href="#"
                 key={item.sys.id}
+                href={`/${item.fields.slug}`}
                 className={`hover:underline ${
                   selectedNews === item ? "text-blue-500" : ""
                 }`}
@@ -165,9 +170,7 @@ export default function SportsDetails({ sport, allNews }) {
                 {item.fields.title}
                 <hr />
                 <br /> <br />
-                {index === allNews.length * 2 - 1 && (
-                  <span ref={titlesRef}></span>
-                )}
+                {index === allNews.length - 1 && <span ref={titlesRef}></span>}
               </Link>
             ))}
           </div>
