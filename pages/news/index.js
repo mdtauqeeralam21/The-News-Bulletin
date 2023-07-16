@@ -9,10 +9,10 @@ export default function News() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('https://newsapi.org/v2/everything?q=apple&from=2023-07-13&to=2023-07-13&sortBy=popularity&apiKey=824cd70e296b4622a3ae94a3b90d6ae1'); // Replace with your API endpoint
+          const response = await fetch('https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1');
           const data = await response.json();
   
-          // Generate slugs from titles
+          
           const newsWithSlugs = data.articles.map((article) => {
             const slug = slugify(article.title, { lower: true });
             return { ...article, slug };
@@ -31,8 +31,8 @@ export default function News() {
   
     return (
       
-      <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-3">
-        {news.slice(0,6).map((article) => (
+      <div className="grid grid-cols-2 gap-3 p-1 md:grid-cols-4 md:grid-flow-row">
+        {news.slice(0,20).map((article) => (
           <Newspage key={article.title} article={article} />
         ))}
       </div>

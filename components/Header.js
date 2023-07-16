@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <> 
     <nav className=" bg-white ">
-        <div className='card content-center p-1 '>
+        <div className=' content-center p-1 '>
           <Link href={"/"} >
         <Image className='rounded m-auto hover:border-2' 
         src={ "/header.png" } 
@@ -21,7 +21,7 @@ const Header = () => {
         alt="Logo" />
         </Link>
         </div>
-      <div className=" hidden md:flex flex-row justify-center gap-6 bg-blue-100 p-3">
+      <div className=" hidden md:flex flex-row justify-center gap-6 p-1">
         <Menu />
         
       </div>

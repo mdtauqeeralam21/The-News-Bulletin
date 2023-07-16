@@ -133,7 +133,7 @@ export default function SportsDetails({ sport, allNews }) {
             />
           </div>
         </div>
-        <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl font-sans md:col-span-5 overflow-auto">
+        <div className="indent-150 mt-8 p-3  text-justify text-xl md:col-span-5 overflow-auto">
           <div className="scrollbar" style={{ maxHeight: "50vh" }}>
             {selectedNews
               ? documentToReactComponents(selectedNews.fields.description)

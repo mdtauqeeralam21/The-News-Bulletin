@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FiMenu } from "react-icons/fi";
 import Link from 'next/link';
-import {AiOutlineLogin,AiOutlineLogout} from "react-icons/Ai"
 import { useSession,signIn,signOut } from 'next-auth/react';
 
 
