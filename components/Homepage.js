@@ -23,7 +23,7 @@ export default function Homepage({ news }) {
         <Link href={'/'+slug}>
           <div className='text-blue-700 text-xl hover:underline active:text-blue-950'>{ title.slice(0,45)+'...' }</div>
           </Link>
-          <div className='text-base md:text-xl mt-2 overflow-hidden'>By: { author } </div>
+          <div className='text-base md:text-normal mt-2 md:overflow-hidden'>By: { author } </div>
         <div>
           <Link className='justify-end'
           href={'/'+slug}>

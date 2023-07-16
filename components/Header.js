@@ -22,7 +22,7 @@ const Header = () => {
         </Link>
         
         {session?.user ?(
-        <div className='text-right mr-8'>{session.user.name}</div>):
+        <div className='text-right mr-8'>Hello, {session.user.name}</div>):
         (" ")
         }
         </div>

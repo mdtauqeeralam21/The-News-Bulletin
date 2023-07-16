@@ -28,7 +28,7 @@ export async function getServerSideProps({ params }) {
 
     return {
       props: {
-        article,
+        article
       },
     };
   } catch (error) {

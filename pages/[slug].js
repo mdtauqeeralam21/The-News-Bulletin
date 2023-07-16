@@ -3,7 +3,8 @@ import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -54,6 +55,8 @@ export default function SportsDetails({ sport, allNews }) {
   const timeoutRef = useRef(null);
   const isFirstVisit = useRef(true);
 
+  const router = useRouter();
+
   const handleClick = (thumbnail) => {
     const newsItem = allNews.find(
       (item) => item.fields.thumbnail === thumbnail
@@ -63,7 +66,9 @@ export default function SportsDetails({ sport, allNews }) {
 
   useEffect(() => {
     if (!selectedNews && allNews.length > 0) {
-      setSelectedNews(allNews[0]);
+      setSelectedNews(
+        allNews.find((item) => item.fields.slug === router.query.slug)
+      );
     }
 
     const titlesContainer = titlesRef.current;
@@ -95,26 +100,19 @@ export default function SportsDetails({ sport, allNews }) {
         isFirstVisit.current = false;
       }
     }
-  }, [allNews, selectedNews]);
+  }, [allNews, router.query.slug]);
 
   if (session) {
     return (
-      <>
-      <Head>
-        <title>News and Blogs</title>
-        <meta name="description" content="latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div className="md:col-span-4">
           <div className="pt-5">
             <h1 className="text-4xl p-5">
               {selectedNews ? selectedNews.fields.title : title}
             </h1>
-            <h3 className="text-2xl p-3">
+            <h3 className="text-2xl p-5 mb-4 mt-0">
               {selectedNews ? selectedNews.fields.author : author}{" "}
-              <div className="bg-grey-300 text-xl mt-5 border-b-2 border-black">
+              <div className="bg-grey-200 text-normal border-b-2 border-black mt-4 ">
                 {selectedNews ? selectedNews.fields.date.slice(0,10) : date}
               </div>
             </h3>
@@ -140,7 +138,7 @@ export default function SportsDetails({ sport, allNews }) {
             />
           </div>
         </div>
-        <div className="indent-150 mt-8 p-3  text-justify text-xl md:col-span-5 overflow-auto">
+        <div className="text-lg indent-150 mt-8 p-3 font-normal text-justify text-xl md:col-span-5 overflow-auto">
           <div className="scrollbar" style={{ maxHeight: "50vh" }}>
             {selectedNews
               ? documentToReactComponents(selectedNews.fields.description)
@@ -152,7 +150,7 @@ export default function SportsDetails({ sport, allNews }) {
             ref={titlesRef}
             className="scrollbar"
             style={{
-              maxHeight: "calc(100vh - 8rem)",
+              maxHeight: "calc(80vh - 8rem)",
               overflowY: "auto",
               overflowX: "hidden",
               backgroundColor: "white",
@@ -160,10 +158,10 @@ export default function SportsDetails({ sport, allNews }) {
               padding: 8,
             }}
           >
-            {[...allNews, ...allNews].map((item, index) => (
+            {allNews.map((item, index) => (
               <Link
-                href="#"
                 key={item.sys.id}
+                href={`/${item.fields.slug}`}
                 className={`hover:underline ${
                   selectedNews === item ? "text-blue-500" : ""
                 }`}
@@ -172,15 +170,12 @@ export default function SportsDetails({ sport, allNews }) {
                 {item.fields.title}
                 <hr />
                 <br /> <br />
-                {index === allNews.length * 2 - 1 && (
-                  <span ref={titlesRef}></span>
-                )}
+                {index === allNews.length - 1 && <span ref={titlesRef}></span>}
               </Link>
             ))}
           </div>
         </div>
       </div>
-      </>
     );
   } else {
     return (

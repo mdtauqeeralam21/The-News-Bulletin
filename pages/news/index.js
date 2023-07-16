@@ -4,33 +4,32 @@ import Newspage from "@/components/Newspage";
 import Skeleton from '@/components/Skeleton';
 import Head from 'next/head';
 
-export default function News() {
-    const [news, setNews] = useState([]);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1');
-          const data = await response.json();
-  
-          const newsWithSlugs = data.articles.map((article) => {
-            const slug = slugify(article.title, { lower: true });
-            return { ...article, slug };
-          });
-  
-          setNews(newsWithSlugs);
-        } catch (error) {
-          console.log('Error fetching news:', error);
-          return error;
-        }
-      };
-  
-      fetchData();
-    }, []);
+export async function getServerSideProps(){
+  try {
+    const response = await fetch('https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1');
+    const data = await response.json();
 
-  if(!news) return <Skeleton />
-    
-  
+    const newsWithSlugs = data.articles.map((article) => {
+      const slug = slugify(article.title, { lower: true });
+       return { ...article, slug };
+    });
+
+    return{
+    props:{
+      news:newsWithSlugs
+      
+    }
+  }
+
+    // setNews(newsWithSlugs);
+  } catch (error) {
+    console.log('Error fetching news:', error);
+    return error;
+  }
+};
+
+export default function News({news,slug}) {
+    // const [news, setNews] = useState([]);
     return (
       <>
       <Head>
@@ -39,10 +38,9 @@ export default function News() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      
-      <div className="grid grid-cols-2 gap-3 p-1 md:grid-cols-4 md:grid-flow-row">
+      <div className="grid grid-cols-2 gap-3 p-1 md:scroll-auto md:grid-cols-4 md:grid-flow-row">
         {news.slice(0,32).map((article) => (
-          <Newspage key={article.title} article={article} />
+          <Newspage key={article.title} article={article} slug={slug} />
         ))}
       </div>
       </>
