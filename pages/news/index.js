@@ -31,7 +31,7 @@ export async function getServerSideProps(){
 };
 
 export default function News({news}) {
-    // const [news, setNews] = useState([]);
+    
     return (
       <>
       <Head>
