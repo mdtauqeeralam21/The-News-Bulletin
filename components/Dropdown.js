@@ -22,7 +22,8 @@ export default function Dropdown() {
         <FiMenu className="text-3xl" />
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-1 bg-white rounded-md shadow-lg">
+        <div onClick={toggleDropdown}
+        className="absolute bg-slate-100 right-0 mt-2 py-1 bg-white rounded-md shadow-lg">
           <Link href="/" className="block px-4 py-2 text-gray-800 hover:bg-gray-400">
             Home
           </Link>

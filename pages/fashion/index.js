@@ -24,7 +24,7 @@ export default function Fashion({ news }) {
     <>
     <Head>
         <title>Fashion</title>
-        <meta name="description" content=" latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <meta name="description" content=" latest news, western style, Indian style,Mens fashion, women fashion, kids fashion,fashion designing,men styles,women style, fashion blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 

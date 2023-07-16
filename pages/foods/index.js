@@ -24,7 +24,7 @@ export default function Foods({ news }) {
     <>
     <Head>
         <title>Foods</title>
-        <meta name="description" content=" foods,chinese foods,Indian foods, Italian" />
+        <meta name="description" content=" foods,chinese foods,Indian foods, Italian food,korean food, veg, non-veg,cooking,recipe, healthy food,kitchen, halal," />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 

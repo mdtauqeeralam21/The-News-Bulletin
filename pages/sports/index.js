@@ -23,8 +23,8 @@ export default function Sports({ news }) {
     
     <>
     <Head>
-        <title>Sports News</title>
-        <meta name="description" content=" latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <title>Sports</title>
+        <meta name="description" content=" latest news,teams,sports, cricket, football, badminton, hockey,kabaddi,rugby, basketball" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
