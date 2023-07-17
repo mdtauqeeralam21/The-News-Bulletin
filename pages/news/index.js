@@ -1,5 +1,4 @@
 import slugify from 'slugify';
-import { useEffect,useState } from 'react';
 import Newspage from "@/components/Newspage";
 import Skeleton from '@/components/Skeleton';
 import Head from 'next/head';
@@ -23,12 +22,12 @@ export async function getServerSideProps(){
     }
   }
 
-    // setNews(newsWithSlugs);
   } catch (error) {
     console.log('Error fetching news:', error);
     return error;
   }
 };
+
 
 export default function News({news}) {
     

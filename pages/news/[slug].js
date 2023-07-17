@@ -7,15 +7,13 @@ import { useSession,signIn } from 'next-auth/react';
 
 export async function getServerSideProps({ params }) {
   try {
-    const slug = params.slug; // Get the slug from the route parameters
-
-    // Fetch news articles from the News API
+    const slug = params.slug; 
     const response = await fetch(
       'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1'
     );
     const data = await response.json();
 
-    // Find the news article with the matching slug or generate the slug dynamically
+    
     const article = data.articles.find((article) => {
       const generatedSlug = slugify(article.title, { lower: true });
       return generatedSlug === slug;
