@@ -8,7 +8,7 @@ export default function Homepage({ news }) {
   return (
     <div className="card relative font-Playfair border-b-4 border-black p-2">
       <div className="featured">
-        <Image className='rounded active:scale-150'
+        <Image className='w-full md:rounded md:active:scale-150'
         //  src={ 'https:'+ thumbnail.map(image=>image.fields.file.url)  }
         src={'https:'+ thumbnail.fields.file.url}
          width={thumbnail.fields.file.details.image.width}
