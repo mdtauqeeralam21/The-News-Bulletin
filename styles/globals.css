@@ -18,27 +18,3 @@
   font-weight: 400;
   font-size: 15px;
 }
-
-@layer base {
-  html {
-    font-family: Proxima Nova, system-ui, sans-serif;
-  }
-}
-
-.marquee-container {
-  overflow: hidden;
-}
-
-.marquee {
-  display: block;
-  animation: marquee 10s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}

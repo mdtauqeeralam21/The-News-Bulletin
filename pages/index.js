@@ -28,7 +28,9 @@ export default function Home({ news }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4 gap-2"> 
+      
+      <hr/><hr/>
+    <div className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4 md:gap-1"> 
       {
       news.slice(0,8).map(item =>(
         <Homepage key={item.sys.id} news={item} />
@@ -36,9 +38,9 @@ export default function Home({ news }) {
     </div>
     <div className='text-center pt-14 h-24 font-bold text-4xl'>Sports</div>
     <hr/><hr/>
-    <div className="grid grid-cols-2 gap-3 p-1 md:grid-cols-3"> 
+    <div className="grid grid-cols-2 gap-2 p-1 md:grid-cols-3 md:gap-2"> 
       {
-      news.filter(i=>i.fields.tags=='Sports').map(item =>(
+      news.filter(i=>i.fields.tags=='Sports').slice(0,6).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
@@ -46,26 +48,26 @@ export default function Home({ news }) {
     
     <div className='text-center pt-14 h-24 font-bold text-4xl'>Technology</div>
     <hr/><hr/>
-    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4 md:gap-1"> 
       {
-      news.filter(i=>i.fields.tags=='Technology').map(item =>(
+      news.filter(i=>i.fields.tags=='Technology').slice(0,4).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
 
     <div className='text-center pt-14 h-24 font-bold text-4xl'>Fashion</div>
     <hr/><hr/>
-    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4"> 
+    <div className="grid grid-cols-1 gap-3 p-1 md:grid-cols-4 md:gap-1"> 
       {
-      news.filter(i=>i.fields.tags=='Fashion').map(item =>(
+      news.filter(i=>i.fields.tags=='Fashion').slice(0,4).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>
     <div className='text-center pt-14 h-24 font-bold text-4xl'>Entertainment</div>
     <hr/><hr/>
-    <div className="grid grid-cols-2 gap-3 p-1 md:grid-cols-3"> 
+    <div className="grid grid-cols-2 gap-2 p-1 md:grid-cols-3 md:gap-2"> 
       {
-      news.filter(i=>i.fields.tags=='Entertainment').map(item =>(
+      news.filter(i=>i.fields.tags=='Entertainment').slice(0,3).map(item =>(
         <Homepage key={item.sys.id} news={item} />
       ))}
     </div>

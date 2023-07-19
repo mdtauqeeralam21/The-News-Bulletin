@@ -6,7 +6,7 @@ export default function Homepage({ news }) {
   const { title,author,tags,thumbnail,slug } = news.fields;
 
   return (
-    <div className="card relative font-Playfair border-b-4 border-black p-2">
+    <div className="card relative font-Playfair mt-4 p-2">
       <div className="featured">
         <Image className='w-full md:rounded md:active:scale-150'
         //  src={ 'https:'+ thumbnail.map(image=>image.fields.file.url)  }

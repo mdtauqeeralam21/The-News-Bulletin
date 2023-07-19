@@ -19,7 +19,6 @@ export async function graphqlContent(query) {
    
     return data.newsCollection;
   } catch (error) {
-    console.error(`There was a problem retrieving entries with the query ${query}`);
     console.error(error);
   }
 }

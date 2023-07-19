@@ -3,6 +3,7 @@ import slugify from 'slugify';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession,signIn } from 'next-auth/react';
+import Skeleton from '@/components/Skeleton';
 
 
 export async function getServerSideProps({ params }) {
@@ -42,8 +43,8 @@ export default function NewsArticlePage({ article }) {
   const router = useRouter();
   const { data: session } = useSession();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
+  if (!article) {
+    return <Skeleton />;
   }
 
   const { title,urlToImage,publishedAt, description,content,author,url } = article;

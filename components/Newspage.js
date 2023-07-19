@@ -8,8 +8,8 @@ export default function Newspage({ article }) {
 
   return (
     <div className="card gap-4 relative border-b-4 border-black p-2">
-      <div className="featured">
-        <Image className='mb-3 w-full rounded md:h-56 '
+      <div>
+        <Image className='mb-3 w-full h-full rounded md:h-56 md:w-full '
           src={urlToImage}
           width={`500`}
           height={`650`}
@@ -17,7 +17,7 @@ export default function Newspage({ article }) {
         />
       </div>
       <Link href={"/news/"+slug}>
-      <div className='text-blue-700 text-xl hover:underline active:text-blue-950'>{title}</div>
+      <div className='text-blue-700 text-xl hover:underline active:text-blue-950'>{title.slice(0,45)}</div>
       </Link>
       <div className='text-lg overflow-hidden md:text-xl md:w-full mt-2 md:w-2/3 md:overflow-hidden text-ellipsis'>By: {author} </div>
 
