@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 export default function Newspage({ article }) {
   const { title, author, urlToImage,slug } = article;
-  console.log(article);
 
   return (
     <div className="card gap-4 relative border-b-4 border-black p-2">

@@ -77,9 +77,9 @@ export default function NewsArticlePage({ article }) {
             </div>
             <div className='flex flex-col flex-end'>
                 <div className='text-lg indent-100 mt-16 p-3 font-normal text-xl font-Playfair'>
-                {description}
+                {description} 
                 {content}
-                {description}
+            
                 </div>
                 <Link href={url}
                 className='bg-blue-500 text-xl w-20 text-center text-white p-2 rounded hover:underline hover:bg-blue-700'>

@@ -1,6 +1,5 @@
 import slugify from 'slugify';
 import Newspage from "@/components/Newspage";
-import Skeleton from '@/components/Skeleton';
 import Head from 'next/head';
 import { useState } from 'react';
 
@@ -29,18 +28,17 @@ export async function getStaticProps(){
   }
 };
 
-
 export default function News({news}) {
-  //const [todos, setTodos] = useState([]);
-  const [todosPerPage, setTodosPerpage] = useState(10);
+ 
+  const [newsPerPage, setnewsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(news.length / todosPerPage);
+  const totalPages = Math.ceil(news.length / newsPerPage);
     const pages = [...Array(totalPages + 1).keys()].slice(1);
-    const indexOflastTodo= currentPage * todosPerPage;
-    const indexOfFirstTodo = indexOflastTodo - todosPerPage;
+    const indexOflastNews= currentPage * newsPerPage;
+    const indexOfFirstNews = indexOflastNews - newsPerPage;
 
-    const visibleTodos = news.slice(indexOfFirstTodo,indexOflastTodo);
+    const visibleNews = news.slice(indexOfFirstNews,indexOflastNews);
    function prevoiusPageHandler(){
         if(currentPage!==1){
             setCurrentPage(currentPage-1);
@@ -52,7 +50,6 @@ export default function News({news}) {
         }
     }
 
-
     return (
       <>
       <Head>
@@ -63,7 +60,7 @@ export default function News({news}) {
 
       <select className='mt-4' 
       onChange={(e)=>{
-            setTodosPerpage(e.target.value);
+            setnewsPerPage(e.target.value);
         }}>
             <option value={10}>10</option>
             <option value={20}>20</option>
@@ -71,14 +68,14 @@ export default function News({news}) {
             <option value={40}>40</option>
         </select>
       <div className="grid grid-cols-1 gap-3 p-3 md:scroll-auto md:grid-cols-4 md:grid-flow-row">
-        {visibleTodos.map((article) => (
+        {visibleNews.map((article) => (
           <Newspage key={article.title} article={article} />
         ))}
       </div>
 
       <div title='previous page' className='flex justify-center mt-4 gap-8 text-2xl border-black'>
       <div onClick={prevoiusPageHandler}
-      className='rounded active:bg-blue-500'
+      className='rounded p-1 active:bg-blue-500'
       >Previous</div>
             <div className='flex gap-4'>{
                 pages.map((page) =>
@@ -88,7 +85,7 @@ export default function News({news}) {
                     </div>)}
             </div>
             <div title='Next Page' onClick={nextpageHandler}
-            className='rounded active:bg-blue-500'
+            className='rounded p-1 active:bg-blue-500'
             >Next</div>
             </div>
       </>
