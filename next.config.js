@@ -4,7 +4,8 @@ const nextConfig = {
   images:{
     domains: [
       'images.ctfassets.net',
-    'images.wsj.net'
+    'images.wsj.net',
+    's.wsj.net'
   ],
   }
 }

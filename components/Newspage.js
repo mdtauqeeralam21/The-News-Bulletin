@@ -22,7 +22,7 @@ export default function Newspage({ article }) {
       <div className='text-lg overflow-hidden md:text-xl md:w-full mt-2 md:w-2/3 md:overflow-hidden text-ellipsis'>By: {author} </div>
 
       <Link href={'/news/' +slug}>
-        <div className="absolute bottom-1 right-1 bg-blue-600 h-8 w-1/3 rounded-full text-center overflow-hidden text-white p-1  hover:underline active:bg-blue-900">
+        <div title='Read more' className="absolute bottom-1 right-1 bg-blue-600 h-8 w-1/3 rounded-full text-center overflow-hidden text-white p-1  hover:underline active:bg-blue-900">
           read more
         </div>
       </Link>

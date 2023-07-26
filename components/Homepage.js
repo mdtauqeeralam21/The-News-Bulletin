@@ -27,7 +27,7 @@ export default function Homepage({ news }) {
         <div>
           <Link className='justify-end'
           href={'/'+slug}>
-        <div className="absolute bottom-1 right-1 bg-blue-600 h-8 w-1/3 rounded-full text-center overflow-hidden text-white p-1  hover:underline active:bg-blue-900">
+        <div className="absolute bottom-1 right-1 bg-blue-600 h-8 w-1/4 rounded-full text-center overflow-hidden text-white p-1  hover:underline active:bg-blue-900">
            read more
            </div>
            </Link>

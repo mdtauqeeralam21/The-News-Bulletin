@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const client = createClient({
   space: process.env.SPACE_ID,
@@ -104,6 +105,12 @@ export default function SportsDetails({ sport, allNews }) {
 
   if (session) {
     return (
+      <>
+      <Head>
+        <title>{selectedNews ? selectedNews.fields.title : title}</title>
+        <meta name="description" content=" latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div className="md:col-span-4">
           <div className="pt-5">
@@ -176,9 +183,16 @@ export default function SportsDetails({ sport, allNews }) {
           </div>
         </div>
       </div>
+      </>
     );
   } else {
     return (
+      <>
+      <Head>
+        <title>Sign In page</title>
+        <meta name="description" content=" latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="max-w-md w-full p-6 bg-white rounded-lg shadow">
           <h2
@@ -195,6 +209,7 @@ export default function SportsDetails({ sport, allNews }) {
           </p>
         </div>
       </div>
+      </>
     );
   }
 }
