@@ -23,7 +23,7 @@ export default function Home({ news }) {
     
     <>
     <Head>
-        <title>The News and Blogs Bulletin</title>
+        <title>Homepage-The News and Blogs Bulletin</title>
         <meta name="description" content="recent news, blogs,opinions about, sports, foods, entertainment,fashion, technology" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

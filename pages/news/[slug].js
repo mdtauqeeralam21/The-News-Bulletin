@@ -4,13 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSession,signIn } from 'next-auth/react';
 import Skeleton from '@/components/Skeleton';
+import Head from 'next/head';
 
 
 export async function getServerSideProps({ params }) {
   try {
     const slug = params.slug; 
     const response = await fetch(
-      'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=824cd70e296b4622a3ae94a3b90d6ae1'
+      process.env.NEWS_API_ENDPOINT
     );
     const data = await response.json();
 
@@ -51,7 +52,12 @@ export default function NewsArticlePage({ article }) {
 
   if (session) {
   return (
-    
+    <>
+    <Head>
+        <title>{title}</title>
+        <meta name="description" content=" latest news, blogs,opinions, sports, foods, entertainment,fashion, technology" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 p-4">
         
              <div>
@@ -61,7 +67,6 @@ export default function NewsArticlePage({ article }) {
                  <div className='border-b-2 border-black ml-5'>{publishedAt.slice(0,10)}</div>
                  </div>
                  <div className='m-2 pt-10 pl-7'>
-              
                  <Image className='rounded'
           src={urlToImage}
           width={`500`}
@@ -72,18 +77,17 @@ export default function NewsArticlePage({ article }) {
             </div>
             <div className='flex flex-col flex-end'>
                 <div className='text-lg indent-100 mt-16 p-3 font-normal text-xl font-Playfair'>
-                {description}
+                {description} 
                 {content}
-                {description}
+            
                 </div>
                 <Link href={url}
                 className='bg-blue-500 text-xl w-20 text-center text-white p-2 rounded hover:underline hover:bg-blue-700'>
                 <div>more</div>
                 </Link>
                 </div>
-               
-              
                  </div>
+                 </>
   );
 } else {
   return (
